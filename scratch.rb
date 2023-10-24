@@ -1,18 +1,39 @@
-a = 'hi'
-english_greetings = ['hello', a, 'good morning']
-
-greetings = {
-  french: ['bonjour', 'salut', 'allo'],
-  english: english_greetings,
-  italian: ['buongiorno', 'buonasera', 'ciao']
+VALID_ANIMALS = {
+  dog_breeds: ['Pug', 'Boxer', 'Retriever'],
+  tallest_animal: 'Giraffe',
 }
 
-greetings[:english][1] = 'hey'
+def animal_validation(animal_hash)
+  if animal_hash[:dog_breeds] == VALID_ANIMALS[:dog_breeds]
+    puts 'correct'
+  else
+    puts 'incorrect'
+  end
 
-greetings.each do |language, greeting_list|
-  greeting_list.each { |greeting| greeting.upcase! }
+  if animal_hash[:tallest_animal] == VALID_ANIMALS[:tallest_animal]
+    puts 'correct'
+  else
+    puts 'incorrect'
+  end
 end
 
-puts a
-puts english_greetings[1]
-puts greetings[:english][1]
+animal_validation({
+  dog_breeds: ['Pug', 'Boxer', 'Retriever'],
+  tallest_animal: 'Giraffe',
+})
+# correct
+# correct
+
+animal_validation({
+  dog_breeds: ['Bengal', 'Boxer', 'Retriever'],
+  tallest_animal: 'Giraffe',
+})
+# incorrect
+# correct
+
+animal_validation({
+  dog_breeds: ['Pug', 'Boxer', 'Retriever'],
+  tallest_animal: 'Mouse',
+})
+# correct
+# incorrect
